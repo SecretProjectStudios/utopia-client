@@ -10,6 +10,7 @@ class Lobby extends React.Component {
     this.props.getPlayerList()
   }
   render() {
+    const players = this.props.playerList
     return (
       <Container>
         <Segment inverted color={pickAColour()} size={'massive'}>
@@ -17,9 +18,7 @@ class Lobby extends React.Component {
         </Segment>
         <Segment>
           <List>
-            {
-              this.props.playerList.map(player => (<List.Item>{player.name}</List.Item>))
-            }
+            { players.map((player) => { return (<List.Item>{player.name}</List.Item>) }) }
           </List>
         </Segment>
         <Segment>
