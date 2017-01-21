@@ -2,6 +2,7 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Container, Button, Header, Segment } from 'semantic-ui-react'
+import * as Actions from '../actions'
 
 const Game = () => {
   return (
@@ -19,4 +20,15 @@ const Game = () => {
   )
 }
 
-export default Game
+const mapStateToProps = (state, ownProps) => {
+  return {
+    ...state,
+    ...ownProps.params,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(Actions, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Game)

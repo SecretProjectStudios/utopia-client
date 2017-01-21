@@ -18,12 +18,12 @@ class Lobby extends React.Component {
         <Segment>
           <Button icon="refresh" onClick={this.props.getPlayerList} floated={'right'} />
           <br />
-          <List divided size={'big'}>
+          <List divided size={'huge'}>
             <List.Header>Players</List.Header>
             { players.map((player) => { return (<List.Item>{player.name}</List.Item>) }) }
           </List>
           <br />
-          <Button fluid size={'massive'} color={'green'}>Start Game</Button>
+          <Button fluid size={'huge'} color={'green'}>Start Game</Button>
         </Segment>
       </Container>
     )
