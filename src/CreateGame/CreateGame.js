@@ -15,7 +15,7 @@ const CreateGame = ({ playerName, createGame, setPlayerName }) => {
         <Input label={'Your name'} size={'big'} fluid onChange={(e, { value }) => this.props.setPlayerName(value)} value={playerName} />
         <br />
         <br />
-        <Button color={'green'} size={'big'} disabled={!playerName} fluid onClick={createGame()}>Create Game</Button>
+        <Button color={'green'} size={'big'} disabled={!playerName} fluid onClick={createGame}>Create Game</Button>
       </Segment>
     </Container>
   )
