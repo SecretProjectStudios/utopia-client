@@ -3,7 +3,6 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Input, Container, Button, Header, Segment } from 'semantic-ui-react'
 import * as Actions from '../actions'
-import { pickAColour } from '../util/pickAColour'
 
 class JoinGame extends React.Component {
   componentWillMount() {
@@ -15,8 +14,8 @@ class JoinGame extends React.Component {
   render() {
     return (
       <Container textAlign="center">
-        <Segment inverted color={pickAColour()} size={'massive'}>
-          <Header size={'huge'} textAlign={'center'}>Join the Council</Header>
+        <Segment inverted color={'teal'} size={'massive'}>
+          <Header size={'huge'} textAlign={'center'}>Join a Council</Header>
         </Segment>
         <Segment>
           <Input label={'Room code'} size={'big'} fluid onChange={(e, { value }) => this.props.setRoomCode(value)} value={this.props.roomCode} />

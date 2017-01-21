@@ -3,7 +3,6 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Container, Button, Header, Segment, List } from 'semantic-ui-react'
 import * as Actions from '../actions'
-import { pickAColour } from '../util/pickAColour'
 
 class Lobby extends React.Component {
   componentWillMount() {
@@ -13,7 +12,7 @@ class Lobby extends React.Component {
     const players = this.props.playerList
     return (
       <Container>
-        <Segment inverted color={pickAColour()} size={'massive'}>
+        <Segment size={'massive'}>
           <Header size={'huge'} textAlign={'center'}>Game {this.props.roomReference}</Header>
         </Segment>
         <Segment>
