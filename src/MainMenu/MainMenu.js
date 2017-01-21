@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Button, Grid, Header, Segment, Container } from 'semantic-ui-react'
 import * as Actions from './actions'
+import { pickAColour } from '../util/pickAColour'
 
 const MainMenu = ({ goToCreateGame, goToJoinGame }) => {
   const styles = {
@@ -10,9 +11,10 @@ const MainMenu = ({ goToCreateGame, goToJoinGame }) => {
       marginBottom: '20px',
     },
   }
+
   return (
     <Container>
-      <Segment inverted color={'purple'} size={'massive'}>
+      <Segment inverted color={pickAColour()} size={'massive'}>
         <Header size={'huge'} textAlign={'center'}>Utopia</Header>
       </Segment>
       <Segment>

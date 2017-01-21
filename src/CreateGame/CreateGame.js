@@ -2,11 +2,12 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Input, Container, Button, Header, Segment } from 'semantic-ui-react'
+import { pickAColour } from '../util/pickAColour'
 
 const CreateGame = () => {
   return (
     <Container textAlign="center">
-      <Segment inverted color={'green'} size={'massive'}>
+      <Segment inverted color={pickAColour()} size={'massive'}>
         <Header size={'huge'} textAlign={'center'}>Create a Council</Header>
       </Segment>
       <Segment>
