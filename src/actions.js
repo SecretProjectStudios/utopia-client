@@ -30,6 +30,9 @@ export const setRoomCode = (value) => {
   }
 }
 
+export const goToCreateGame = () => dispatch => dispatch(push('/create'))
+export const goToJoinGame = () => dispatch => dispatch(push('/join'))
+
 export const getPlayerList = () => (dispatch, getState) => {
   const state = getState()
   const url = `https://utopia-server.herokuapp.com/games/${state.room.roomCode}`
