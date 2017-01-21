@@ -8,11 +8,12 @@ import { Router, Route, browserHistory } from 'react-router'
 import { syncHistoryWithStore, routerMiddleware, routerReducer as routing } from 'react-router-redux'
 import { Segment, Header } from 'semantic-ui-react'
 import { MainMenu } from './MainMenu'
-import { JoinGame } from './JoinGame'
+import { JoinGame, reducer as joinGameReducer } from './JoinGame'
 import { CreateGame } from './CreateGame'
 
 const reducer = combineReducers({
   routing,
+  joinGameReducer,
 })
 const middleware = composeWithDevTools(applyMiddleware(thunk, routerMiddleware(browserHistory)))
 const store = createStore(reducer, middleware)
