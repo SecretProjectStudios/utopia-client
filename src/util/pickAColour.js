@@ -2,7 +2,6 @@
       const min = Math.ceil(1)
       const max = Math.floor(10)
       const pickANumber = Math.floor((Math.random() * (max - min)) + min)
-      console.log(pickANumber)
       switch (pickANumber) {
         case 1:
           return 'teal'

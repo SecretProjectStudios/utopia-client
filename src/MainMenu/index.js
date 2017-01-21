@@ -1,5 +1,3 @@
 import MainMenu from './MainMenu'
 
-export {
-    MainMenu,
-}
+export default MainMenu

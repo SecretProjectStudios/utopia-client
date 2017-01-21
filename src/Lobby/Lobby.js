@@ -1,19 +1,20 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Input, Container, Button, Header, Segment, List } from 'semantic-ui-react'
-import * as Actions from './actions'
+import { Container, Button, Header, Segment, List } from 'semantic-ui-react'
+import * as Actions from '../actions'
+import { pickAColour } from '../util/pickAColour'
 
-const Lobby = ({ playerList }) => {
+const Lobby = ({ players }) => {
   return (
     <Container>
-      <Segment inverted color={'teal'} size={'massive'}>
+      <Segment inverted color={pickAColour()} size={'massive'}>
         <Header size={'huge'} textAlign={'center'}>Game ####</Header>
       </Segment>
       <Segment>
         <List>
           {
-            playerList.map(player => (<List.Item>{player.name}</List.Item>))
+            players.map(player => (<List.Item>{player.name}</List.Item>))
           }
         </List>
       </Segment>
@@ -26,7 +27,7 @@ const Lobby = ({ playerList }) => {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    ...state.lobbyReducer,
+    ...state,
     ...ownProps.params,
   }
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Input, Container, Button, Header, Segment } from 'semantic-ui-react'
-import * as Actions from './actions'
+import * as Actions from '../actions'
 import { pickAColour } from '../util/pickAColour'
 
 class JoinGame extends React.Component {
@@ -34,7 +34,7 @@ class JoinGame extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    ...state.joinGameReducer,
+    ...state,
     ...ownProps.params,
   }
 }

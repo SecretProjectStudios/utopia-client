@@ -1,5 +1,3 @@
 import CreateGame from './CreateGame'
 
-export {
-    CreateGame,
-}
+export default CreateGame

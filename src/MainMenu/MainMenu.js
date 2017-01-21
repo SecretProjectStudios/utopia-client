@@ -2,7 +2,7 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Button, Grid, Header, Segment, Container } from 'semantic-ui-react'
-import * as Actions from './actions'
+import * as Actions from '../actions'
 import { pickAColour } from '../util/pickAColour'
 
 const MainMenu = ({ goToCreateGame, goToJoinGame }) => {
