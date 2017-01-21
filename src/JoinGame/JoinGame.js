@@ -24,7 +24,7 @@ class JoinGame extends React.Component {
           <Input label={'Name'} fluid onChange={(e, { value }) => this.props.setPlayerName(value)} value={this.props.playerName} />
           <br />
           <br />
-          <Button color={'green'} fluid onClick={e => console.log('join clicked')}>Join</Button>
+          <Button color={'green'} fluid disabled={!this.props.roomCode || !this.props.playerName} onClick={this.props.joinGame}>Join</Button>
         </Segment>
       </Container>
     )

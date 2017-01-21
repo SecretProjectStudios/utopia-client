@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { push } from 'react-router-redux'
 
 export const constants = {
   SET_PLAYER_NAME: 'SET_PLAYER_NAME',
@@ -17,4 +18,11 @@ export const setRoomCode = (value) => {
     type: constants.SET_ROOM_CODE,
     value,
   }
+}
+
+export const joinGame = () => (dispatch, getState) => {
+  const state = getState()
+  const url = `https://utopia-server.herokuapp.com/games/${state.roomCode}`
+  axios.get(url)
+       .then(push('/game'))
 }
