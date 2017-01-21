@@ -6,8 +6,9 @@ import * as Actions from '../actions'
 
 class Lobby extends React.Component {
   componentWillMount() {
-    this.props.getPlayerList()
+    this.props.getGameState()
   }
+
   render() {
     const players = this.props.playerList
     return (
@@ -16,11 +17,11 @@ class Lobby extends React.Component {
           <Header size={'huge'} textAlign={'center'}>Game {this.props.roomReference}</Header>
         </Segment>
         <Segment>
-          <Button icon="refresh" onClick={this.props.getPlayerList} floated={'right'} />
+          <Button icon="refresh" onClick={this.props.getGameState} floated={'right'} />
           <br />
           <List divided size={'huge'}>
             <List.Header>Players</List.Header>
-            { players.map((player) => { return (<List.Item>{player.name}</List.Item>) }) }
+            {players.map((player) => { return (<List.Item>{player.name}</List.Item>) })}
           </List>
           <br />
           <Button fluid size={'huge'} color={'green'}>Start Game</Button>
