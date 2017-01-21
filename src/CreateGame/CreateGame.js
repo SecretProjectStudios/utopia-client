@@ -9,6 +9,12 @@ const CreateGame = () => {
       <Segment inverted color={'green'} size={'massive'}>
         <Header size={'huge'} textAlign={'center'}>Create a Council</Header>
       </Segment>
+      <Segment>
+        <Input label={'Your name'} size={'big'} fluid onChange={console.log('name')} />
+        <br />
+        <br />
+        <Button color={'green'} size={'big'} fluid onClick={console.log('create game')}>Create Game</Button>
+      </Segment>
     </Container>
   )
 }

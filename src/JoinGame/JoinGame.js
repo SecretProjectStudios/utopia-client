@@ -18,13 +18,13 @@ class JoinGame extends React.Component {
           <Header size={'huge'} textAlign={'center'}>Join the Council</Header>
         </Segment>
         <Segment>
-          <Input label={'Room code'} fluid onChange={(e, { value }) => this.props.setRoomCode(value)} value={this.props.roomCode} />
+          <Input label={'Room code'} size={'big'} fluid onChange={(e, { value }) => this.props.setRoomCode(value)} value={this.props.roomCode} />
           <br />
           <br />
-          <Input label={'Name'} fluid onChange={(e, { value }) => this.props.setPlayerName(value)} value={this.props.playerName} />
+          <Input label={'Your name'} size={'big'} fluid onChange={(e, { value }) => this.props.setPlayerName(value)} value={this.props.playerName} />
           <br />
           <br />
-          <Button color={'green'} fluid disabled={!this.props.roomCode || !this.props.playerName} onClick={this.props.joinGame}>Join</Button>
+          <Button color={'green'} size={'big'} fluid disabled={!this.props.roomCode || !this.props.playerName} onClick={this.props.joinGame}>Join</Button>
         </Segment>
       </Container>
     )
