@@ -20,6 +20,7 @@ class Lobby extends React.Component {
           <List>
             { players.map((player) => { return (<List.Item>{player.name}</List.Item>) }) }
           </List>
+          <Button icon="refresh" onClick={this.props.getPlayerList} />
         </Segment>
         <Segment>
           <Button>Start Game</Button>
