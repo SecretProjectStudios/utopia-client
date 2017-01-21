@@ -3,7 +3,10 @@ box: node:4.2.6-slim
 
 production:
     steps:
-        - wercker/npm-install@1.1.4
+        - script:
+            name: NPM install
+            code: |
+                npm install
         - script:
             name: Build Static Assets
             code: |
