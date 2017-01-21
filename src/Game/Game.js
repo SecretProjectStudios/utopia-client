@@ -8,7 +8,7 @@ const Game = () => {
   return (
     <Container>
       <Segment inverted color={pickAColour()} size={'massive'}>
-        <Header size={'huge'} textAlign={'center'}>Your goal</Header>
+        <Header size={'huge'} textAlign={'center'}>Your goal is</Header>
       </Segment>
     </Container>
   )

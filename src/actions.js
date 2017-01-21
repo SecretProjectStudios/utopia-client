@@ -16,7 +16,7 @@ export const setPlayerName = (value) => {
   }
 }
 
-export const setPlayerID = (value) => {
+const setPlayerID = (value) => {
   return {
     type: constants.SET_PLAYER_ID,
     value,
@@ -29,10 +29,6 @@ export const setRoomCode = (value) => {
     value,
   }
 }
-
-export const goToCreateGame = () => dispatch => dispatch(push('/create'))
-
-export const goToJoinGame = () => dispatch => dispatch(push('/join'))
 
 export const getPlayerList = () => (dispatch, getState) => {
   const state = getState()
@@ -48,6 +44,7 @@ export const joinGame = () => (dispatch, getState) => {
 
 export const createGame = () => (dispatch, getState) => {
   const playerName = getState().playerName
+  console.log('player name: ', playerName)
   const url = 'https://utopia-server.herokuapp.com/games'
   axios.put(url, { playerName })
        .then((response) => {

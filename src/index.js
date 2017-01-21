@@ -7,9 +7,10 @@ import { Provider } from 'react-redux'
 import { Router, Route, browserHistory } from 'react-router'
 import { syncHistoryWithStore, routerMiddleware, routerReducer as routing } from 'react-router-redux'
 import MainMenu from './MainMenu'
+import CreateGame from './CreateGame'
 import JoinGame from './JoinGame'
 import Lobby from './Lobby'
-import CreateGame from './CreateGame'
+import Game from './Game'
 import * as globalReducer from './reducer'
 
 const reducer = combineReducers({
@@ -33,17 +34,16 @@ const App = ({ children }) => {
     </div>
   )
 }
-const NewGame = () => <h1>hey</h1>
 
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Route component={App}>
-        <Route path="/new" component={NewGame} />
+        <Route path="/create" component={CreateGame} />
         <Route path="/join" component={JoinGame} />
         <Route path="/join/:reference" component={JoinGame} />
-        <Route path="/create" component={CreateGame} />
         <Route path="/lobby/:reference" component={Lobby} />
+        <Route path="/game" component={Game} />
         <Route path="/" component={MainMenu} />
       </Route>
     </Router>
