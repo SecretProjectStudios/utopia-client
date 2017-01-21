@@ -59,7 +59,7 @@ export const joinGame = () => (dispatch, getState) => {
 export const createGame = () => (dispatch, getState) => {
   const playerName = getState().playerName
   const url = `${constants.SERVER_ADDRESS}/games`
-  axios.put(url, { playerName })
+  axios.post(url, { playerName })
        .then((response) => {
          dispatch(setPlayerID(response.data._id))
          dispatch(setRoomCode(response.data.gameId))
