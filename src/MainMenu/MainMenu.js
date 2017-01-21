@@ -1,19 +1,18 @@
 import React from 'react'
-import { Button, Header, Grid } from 'semantic-ui-react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { Button, Grid } from 'semantic-ui-react'
 
 const MainMenu = () => {
   const styles = {
-    row: {
-      margin: '20px 0px',
+    rowSpacer: {
+      marginBottom: '20px',
     },
   }
   return (
-    <Grid container columns={1}>
+    <Grid columns={1}>
       <Grid.Column>
-        <Grid.Row>
-          <Header size={'huge'} textAlign={'center'}>Council</Header>
-        </Grid.Row>
-        <Grid.Row style={styles.row}>
+        <Grid.Row style={styles.rowSpacer}>
           <Button fluid size={'massive'} color="green">Create Game</Button>
         </Grid.Row>
         <Grid.Row>
@@ -23,4 +22,11 @@ const MainMenu = () => {
     </Grid>
   )
 }
-export default MainMenu
+
+const mapStateToProps = (state) => {
+  return {
+    ...state,
+  }
+}
+
+export default connect(mapStateToProps)(MainMenu)

@@ -6,7 +6,9 @@ import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import { Router, Route, browserHistory } from 'react-router'
 import { syncHistoryWithStore, routerMiddleware, routerReducer as routing } from 'react-router-redux'
-import MainMenu from './MainMenu/MainMenu'
+import { Segment, Header } from 'semantic-ui-react'
+import { MainMenu } from './MainMenu'
+import { JoinGame } from './JoinGame'
 
 const reducer = combineReducers({
   routing,
@@ -17,27 +19,22 @@ const history = syncHistoryWithStore(browserHistory, store)
 
 const App = ({ children }) => {
   const styles = {
-    container: {
-      marginTop: '40px',
+    wrapper: {
+      margin: '40px 40px',
     },
   }
   return (
-    <div style={styles.container}>
-      <section>
+    <div style={styles.wrapper}>
+      <Segment inverted color={'grey'} size={'massive'}>
+        <Header size={'huge'} textAlign={'center'}>Council</Header>
+      </Segment>
+      <Segment>
         {children}
-      </section>
+      </Segment>
     </div>
   )
 }
 const NewGame = () => <h1>hey</h1>
-
-const JoinGame = ({ params }) => {
-  return (
-    <div>
-      {params.reference}
-    </div>
-  )
-}
 
 ReactDOM.render(
   <Provider store={store}>
