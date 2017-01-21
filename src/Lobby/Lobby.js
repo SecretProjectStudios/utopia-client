@@ -14,7 +14,7 @@ class Lobby extends React.Component {
     return (
       <Container>
         <Segment inverted color={pickAColour()} size={'massive'}>
-          <Header size={'huge'} textAlign={'center'}>Game {this.props.roomCode}</Header>
+          <Header size={'huge'} textAlign={'center'}>Game {this.props.roomReference}</Header>
         </Segment>
         <Segment>
           <Button icon="refresh" onClick={this.props.getPlayerList} floated={'right'} />
@@ -23,6 +23,7 @@ class Lobby extends React.Component {
             <List.Header>Players</List.Header>
             { players.map((player) => { return (<List.Item>{player.name}</List.Item>) }) }
           </List>
+          <br />
           <Button fluid size={'massive'} color={'green'}>Start Game</Button>
         </Segment>
       </Container>

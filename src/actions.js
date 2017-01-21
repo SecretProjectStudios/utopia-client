@@ -6,6 +6,7 @@ export const constants = {
   SET_PLAYER_NAME: 'SET_PLAYER_NAME',
   SET_ROOM_CODE: 'SET_ROOM_CODE',
   SET_PLAYER_LIST: 'SET_PLAYER_LIST',
+  SET_ROOM_REFERENCE: 'SET_ROOM_REFERENCE',
   START_GAME: 'START_GAME',
 }
 
@@ -30,6 +31,13 @@ export const setRoomCode = (value) => {
   }
 }
 
+export const setRoomReference = (value) => {
+  return {
+    type: constants.SET_ROOM_REFERENCE,
+    value,
+  }
+}
+
 export const setPlayerList = (value) => {
   return {
     type: constants.SET_PLAYER_LIST,
@@ -40,11 +48,22 @@ export const setPlayerList = (value) => {
 export const goToCreateGame = () => dispatch => dispatch(push('/create'))
 export const goToJoinGame = () => dispatch => dispatch(push('/join'))
 
-export const getPlayerList = () => (dispatch, getState) => {
+export const pollForGameState = () => (dispatch, getState) => {
   const state = getState()
   const url = `https://utopia-server.herokuapp.com/games/${state.roomCode}`
   axios.get(url)
        .then(response => dispatch(setPlayerList(response.data.players)))
+}
+
+export const getPlayerList = () => (dispatch, getState) => {
+  const state = getState()
+  const url = `https://utopia-server.herokuapp.com/games/${state.roomCode}`
+  axios.get(url)
+       .then((response) => {
+         console.log(response.data)
+         dispatch(setPlayerList(response.data.players))
+         dispatch(setRoomReference(response.data.reference))
+       })
 }
 
 export const joinGame = () => (dispatch, getState) => {
