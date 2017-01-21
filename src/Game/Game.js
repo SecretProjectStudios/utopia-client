@@ -1,7 +1,7 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Container, Header, Segment } from 'semantic-ui-react'
+import { Container, Header, Button, Segment } from 'semantic-ui-react'
 import * as Actions from '../actions'
 
 const Game = () => {
@@ -13,8 +13,12 @@ const Game = () => {
       <Segment size={'big'}>
         Current bill
       </Segment>
-      <Segment size={'big'}>
-        Voting buttons
+      <Segment size={'big'} textAlign={'center'}>
+        <Button.Group size={'massive'}>
+          <Button color={'green'}>Aye!</Button>
+          <Button.Or />
+          <Button color={'red'}>Nay!</Button>
+        </Button.Group>
       </Segment>
     </Container>
   )
