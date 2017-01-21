@@ -8,7 +8,7 @@ import SectionHeader from '../components/SectionHeader'
 class JoinGame extends React.Component {
   componentWillMount() {
     if (this.props.reference) {
-      this.props.setRoomCode(this.props.reference)
+      this.props.setGameReference(this.props.reference)
     }
   }
 
@@ -17,13 +17,13 @@ class JoinGame extends React.Component {
       <Container textAlign="center">
         <SectionHeader colour="teal" header="Join a Council" />
         <Segment>
-          <Input label={'Room code'} size={'huge'} fluid onChange={(e, { value }) => this.props.setRoomCode(value)} value={this.props.roomCode} />
+          <Input label={'Game code'} size={'huge'} fluid onChange={(e, { value }) => this.props.setGameReference(value)} value={this.props.gameReference} />
           <br />
           <br />
           <Input label={'Your name'} size={'huge'} fluid onChange={(e, { value }) => this.props.setPlayerName(value)} value={this.props.playerName} />
           <br />
           <br />
-          <Button color={'green'} size={'huge'} fluid disabled={!this.props.roomCode || !this.props.playerName} onClick={this.props.joinGame}>Join</Button>
+          <Button color={'green'} size={'huge'} fluid disabled={!this.props.gameReference || !this.props.playerName} onClick={this.props.joinGame}>Join</Button>
         </Segment>
       </Container>
     )

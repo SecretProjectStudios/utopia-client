@@ -4,9 +4,9 @@ import { push } from 'react-router-redux'
 export const constants = {
   SET_PLAYER_ID: 'SET_PLAYER_ID',
   SET_PLAYER_NAME: 'SET_PLAYER_NAME',
-  SET_ROOM_CODE: 'SET_ROOM_CODE',
+  SET_GAME_ID: 'SET_GAME_ID',
   SET_PLAYER_LIST: 'SET_PLAYER_LIST',
-  SET_ROOM_REFERENCE: 'SET_ROOM_REFERENCE',
+  SET_GAME_REFERENCE: 'SET_GAME_REFERENCE',
   START_GAME: 'START_GAME',
   SERVER_ADDRESS: 'https://utopia-server.herokuapp.com',
 }
@@ -25,16 +25,16 @@ const setPlayerID = (value) => {
   }
 }
 
-export const setRoomCode = (value) => {
+export const setGameID = (value) => {
   return {
-    type: constants.SET_ROOM_CODE,
+    type: constants.SET_GAME_ID,
     value,
   }
 }
 
-export const setRoomReference = (value) => {
+export const setGameReference = (value) => {
   return {
-    type: constants.SET_ROOM_REFERENCE,
+    type: constants.SET_GAME_REFERENCE,
     value,
   }
 }
@@ -51,8 +51,8 @@ export const goToJoinGame = () => dispatch => dispatch(push('/join'))
 
 export const joinGame = () => (dispatch, getState) => {
   const state = getState()
-  const url = `${constants.SERVER_ADDRESS}/games/${state.roomCode}`
-  axios.get(url)
+  const url = `${constants.SERVER_ADDRESS}/games/${state.gameReference}/${state.playerName}`
+  axios.post(url)
        .then(() => dispatch(push('/lobby')))
 }
 
@@ -62,22 +62,22 @@ export const createGame = () => (dispatch, getState) => {
   axios.post(url, { playerName })
        .then((response) => {
          dispatch(setPlayerID(response.data._id))
-         dispatch(setRoomCode(response.data.gameId))
+         dispatch(setGameID(response.data.gameId))
        })
        .then(() => dispatch(push('/lobby')))
 }
 
 export const getGameState = () => (dispatch, getState) => {
   const state = getState()
-  const url = `${constants.SERVER_ADDRESS}/games/${state.roomCode}`
+  const url = `${constants.SERVER_ADDRESS}/games/${state.gameID}`
   axios.get(url)
        .then((response) => {
          dispatch(setPlayerList(response.data.players))
-         dispatch(setRoomReference(response.data.reference))
+         dispatch(setGameReference(response.data.reference))
        })
 }
 
 export const lodgeVote = () => (dispatch, getState) => {
   const state = getState()
-  const url = `${constants.SERVER_ADDRESS}/games/${state.roomCode}`
+  const url = `${constants.SERVER_ADDRESS}/games/${state.gameID}`
 }
