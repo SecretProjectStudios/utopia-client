@@ -8,7 +8,7 @@ const Game = () => {
   return (
     <Container>
       <Segment size={'massive'}>
-        <Header size={'huge'} textAlign={'center'}>Your goal is</Header>
+        <Header size={'massive'} textAlign={'center'}>Your goal is</Header>
       </Segment>
       <Segment size={'big'}>
         Current bill
