@@ -1,8 +1,9 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Input, Container, Button, Header, Segment } from 'semantic-ui-react'
+import { Input, Container, Button, Segment } from 'semantic-ui-react'
 import * as Actions from '../actions'
+import SectionHeader from '../components/SectionHeader'
 
 class JoinGame extends React.Component {
   componentWillMount() {
@@ -14,9 +15,7 @@ class JoinGame extends React.Component {
   render() {
     return (
       <Container textAlign="center">
-        <Segment inverted color={'teal'} size={'massive'}>
-          <Header size={'huge'} textAlign={'center'}>Join a Council</Header>
-        </Segment>
+        <SectionHeader colour="teal" header="Join a Council" />
         <Segment>
           <Input label={'Room code'} size={'huge'} fluid onChange={(e, { value }) => this.props.setRoomCode(value)} value={this.props.roomCode} />
           <br />

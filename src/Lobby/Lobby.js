@@ -1,8 +1,9 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Container, Button, Header, Segment, List } from 'semantic-ui-react'
+import { Container, Button, Segment, List } from 'semantic-ui-react'
 import * as Actions from '../actions'
+import SectionHeader from '../components/SectionHeader'
 
 class Lobby extends React.Component {
   componentWillMount() {
@@ -11,13 +12,12 @@ class Lobby extends React.Component {
 
   render() {
     const players = this.props.playerList
+    const header = `Game ${this.props.roomReference}`
     return (
       <Container>
-        <Segment size={'massive'}>
-          <Header size={'huge'} textAlign={'center'}>Game {this.props.roomReference}</Header>
-        </Segment>
+        <SectionHeader colour="white" header={header} />
         <Segment>
-          <Button icon="refresh" onClick={this.props.getGameState} floated={'right'} />
+          <Button icon="refresh" circular onClick={this.props.getGameState} floated={'right'} />
           <br />
           <List divided size={'huge'}>
             <List.Header>Players</List.Header>
