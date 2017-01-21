@@ -3,8 +3,8 @@ box: node:4.2.6-slim
 
 production:
     steps:
-        - npm-install
-        -script:
+        - wercker/npm-install@1.1.4
+        - script:
             name: Build Static Assets
             code: |
                 npm run build
