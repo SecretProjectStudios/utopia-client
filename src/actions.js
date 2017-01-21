@@ -81,7 +81,7 @@ export const getGameState = () => (dispatch, getState) => {
        })
 }
 
-export const lodgeVote = () => (dispatch, getState) => {
+export const lodgeVote = () => {}/*(dispatch, getState) => {
   const state = getState()
   const url = `${constants.SERVER_ADDRESS}/games/${state.gameID}`
-}
+}*/
