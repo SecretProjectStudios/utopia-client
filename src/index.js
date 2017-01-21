@@ -27,9 +27,6 @@ const App = ({ children }) => {
   }
   return (
     <div style={styles.wrapper}>
-      <Segment inverted color={'grey'} size={'massive'}>
-        <Header size={'huge'} textAlign={'center'}>Council</Header>
-      </Segment>
       <Segment>
         {children}
       </Segment>
@@ -44,6 +41,7 @@ ReactDOM.render(
       <Route component={App}>
         <Route path="/new" component={NewGame} />
         <Route path="/join" component={JoinGame} />
+        <Route path="/join/:reference" component={JoinGame} />
         <Route path="/create" component={CreateGame} />
         <Route path="/" component={MainMenu} />
       </Route>
