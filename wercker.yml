@@ -1,5 +1,5 @@
 
-box: default
+box: node:4.2.6-slim
 
 production:
     steps:
