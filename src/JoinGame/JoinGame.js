@@ -14,7 +14,7 @@ class JoinGame extends React.Component {
   render() {
     return (
       <Container textAlign="center">
-        <Segment inverted color={'grey'} size={'massive'}>
+        <Segment inverted color={'teal'} size={'massive'}>
           <Header size={'huge'} textAlign={'center'}>Join the Council</Header>
         </Segment>
         <Segment>

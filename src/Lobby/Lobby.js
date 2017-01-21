@@ -1,13 +1,25 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Input, Container, Button, Header, Segment } from 'semantic-ui-react'
+import { Input, Container, Button, Header, Segment, List } from 'semantic-ui-react'
 import * as Actions from './actions'
 
-const Lobby = () => {
+const Lobby = ({ playerList }) => {
   return (
     <Container>
-      <div />
+      <Segment inverted color={'teal'} size={'massive'}>
+        <Header size={'huge'} textAlign={'center'}>Game ####</Header>
+      </Segment>
+      <Segment>
+        <List>
+          {
+            playerList.map(player => (<List.Item>{player.name}</List.Item>))
+          }
+        </List>
+      </Segment>
+      <Segment>
+        <Button>Start Game</Button>
+      </Segment>
     </Container>
   )
 }

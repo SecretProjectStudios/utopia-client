@@ -1,10 +1,15 @@
 import React from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { Input, Container, Button, Header, Segment } from 'semantic-ui-react'
 
 const CreateGame = () => {
   return (
-    <div>
-      <h1>Create</h1>
-    </div>
+    <Container textAlign="center">
+      <Segment inverted color={'green'} size={'massive'}>
+        <Header size={'huge'} textAlign={'center'}>Create a Council</Header>
+      </Segment>
+    </Container>
   )
 }
 

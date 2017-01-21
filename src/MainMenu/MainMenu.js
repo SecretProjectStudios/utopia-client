@@ -1,7 +1,7 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Button, Grid, Header, Segment } from 'semantic-ui-react'
+import { Button, Grid, Header, Segment, Container } from 'semantic-ui-react'
 import * as Actions from './actions'
 
 const MainMenu = ({ goToCreateGame, goToJoinGame }) => {
@@ -11,8 +11,8 @@ const MainMenu = ({ goToCreateGame, goToJoinGame }) => {
     },
   }
   return (
-    <div>
-      <Segment inverted color={'grey'} size={'massive'}>
+    <Container>
+      <Segment inverted color={'purple'} size={'massive'}>
         <Header size={'huge'} textAlign={'center'}>Utopia</Header>
       </Segment>
       <Segment>
@@ -27,7 +27,7 @@ const MainMenu = ({ goToCreateGame, goToJoinGame }) => {
           </Grid.Column>
         </Grid>
       </Segment>
-    </div>
+    </Container>
   )
 }
 

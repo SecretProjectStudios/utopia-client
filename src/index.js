@@ -30,9 +30,7 @@ const App = ({ children }) => {
   }
   return (
     <div style={styles.wrapper}>
-      <Segment>
-        {children}
-      </Segment>
+      {children}
     </div>
   )
 }
@@ -45,7 +43,6 @@ ReactDOM.render(
         <Route path="/new" component={NewGame} />
         <Route path="/join" component={JoinGame} />
         <Route path="/join/:reference" component={JoinGame} />
-        <Route path="/lobby" component={Lobby} />
         <Route path="/create" component={CreateGame} />
         <Route path="/" component={MainMenu} />
       </Route>
