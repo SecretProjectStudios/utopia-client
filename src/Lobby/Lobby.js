@@ -19,7 +19,7 @@ class Lobby extends React.Component {
         <Segment>
           <Button icon="refresh" circular onClick={this.props.getGameState} floated={'right'} />
           <br />
-          <List divided size={'huge'}>
+          <List divided relaxed size={'massive'}>
             <List.Header>Players</List.Header>
             {players.map((player) => { return (<List.Item key={`${player._id}`}>{player.name}</List.Item>) })}
           </List>
