@@ -15,13 +15,13 @@ class Lobby extends React.Component {
     const header = `Game ${this.props.roomReference}`
     return (
       <Container>
-        <SectionHeader colour="white" header={header} />
+        <SectionHeader colour="blue" header={header} />
         <Segment>
           <Button icon="refresh" circular onClick={this.props.getGameState} floated={'right'} />
           <br />
-          <List divided size={'huge'}>
+          <List divided relaxed size={'massive'}>
             <List.Header>Players</List.Header>
-            {players.map((player) => { return (<List.Item>{player.name}</List.Item>) })}
+            {players.map((player) => { return (<List.Item key={`${player._id}`}>{player.name}</List.Item>) })}
           </List>
           <br />
           <Button fluid size={'huge'} color={'green'}>Start Game</Button>
