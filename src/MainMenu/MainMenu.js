@@ -7,7 +7,7 @@ import * as Actions from '../actions'
 const MainMenu = ({ goToCreateGame, goToJoinGame }) => {
   return (
     <Container>
-      <Segment size={'massive'}>
+      <Segment size={'massive'} padded>
         <Header size={'huge'} textAlign={'center'} color={'blue'}>Utopia</Header>
       </Segment>
       <Segment>

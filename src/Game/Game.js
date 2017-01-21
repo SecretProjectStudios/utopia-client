@@ -1,7 +1,7 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Container, Button, Header, Segment } from 'semantic-ui-react'
+import { Container, Header, Segment } from 'semantic-ui-react'
 import * as Actions from '../actions'
 
 const Game = () => {
