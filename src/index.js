@@ -6,15 +6,18 @@ import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import { Router, Route, browserHistory } from 'react-router'
 import { syncHistoryWithStore, routerMiddleware, routerReducer as routing } from 'react-router-redux'
-import { Segment, Header } from 'semantic-ui-react'
+import { Segment } from 'semantic-ui-react'
 import { MainMenu } from './MainMenu'
 import { JoinGame, reducer as joinGameReducer } from './JoinGame'
+import { Lobby, reducer as lobbyReducer } from './Lobby'
 import { CreateGame } from './CreateGame'
 
 const reducer = combineReducers({
   routing,
   joinGameReducer,
+  lobbyReducer,
 })
+
 const middleware = composeWithDevTools(applyMiddleware(thunk, routerMiddleware(browserHistory)))
 const store = createStore(reducer, middleware)
 const history = syncHistoryWithStore(browserHistory, store)
@@ -42,6 +45,7 @@ ReactDOM.render(
         <Route path="/new" component={NewGame} />
         <Route path="/join" component={JoinGame} />
         <Route path="/join/:reference" component={JoinGame} />
+        <Route path="/lobby" component={Lobby} />
         <Route path="/create" component={CreateGame} />
         <Route path="/" component={MainMenu} />
       </Route>
