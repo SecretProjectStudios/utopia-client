@@ -17,16 +17,9 @@ const MainMenu = ({ goToCreateGame, goToJoinGame }) => {
         <Header size={'huge'} textAlign={'center'} color={'blue'}>Utopia</Header>
       </Segment>
       <Segment>
-        <Grid columns={1}>
-          <Grid.Column>
-            <Grid.Row style={styles.rowSpacer}>
-              <Button fluid size={'massive'} color="green" onClick={goToCreateGame}>Create Game</Button>
-            </Grid.Row>
-            <Grid.Row>
-              <Button fluid size={'massive'} color="blue" onClick={goToJoinGame}>Join Game</Button>
-            </Grid.Row>
-          </Grid.Column>
-        </Grid>
+        <Button fluid size={'massive'} color="green" onClick={goToCreateGame}>Create Game</Button>
+        <br />
+        <Button fluid size={'massive'} color="blue" onClick={goToJoinGame}>Join Game</Button>
       </Segment>
     </Container>
   )
