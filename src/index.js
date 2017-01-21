@@ -42,8 +42,7 @@ ReactDOM.render(
         <Route path="/create" component={CreateGame} />
         <Route path="/join" component={JoinGame} />
         <Route path="/join/:reference" component={JoinGame} />
-        <Route path="/lobby" component={Lobby} />
-        <Route path="/game" component={Game} />
+        <Route path="/game/:playerId" component={Game} />
         <Route path="/" component={MainMenu} />
       </Route>
     </Router>

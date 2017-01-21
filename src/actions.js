@@ -7,6 +7,7 @@ export const constants = {
   SET_GAME_ID: 'SET_GAME_ID',
   SET_PLAYER_LIST: 'SET_PLAYER_LIST',
   SET_GAME_REFERENCE: 'SET_GAME_REFERENCE',
+  SET_GAME_STATE: 'SET_GAME_STATE',
   START_GAME: 'START_GAME',
   SERVER_ADDRESS: 'https://utopia-server.herokuapp.com',
 }
@@ -46,6 +47,13 @@ export const setPlayerList = (value) => {
   }
 }
 
+export const setGameState = (value) => {
+  return {
+    type: constants.SET_GAME_STATE,
+    value,
+  }
+}
+
 export const goToCreateGame = () => dispatch => dispatch(push('/create'))
 export const goToJoinGame = () => dispatch => dispatch(push('/join'))
 
@@ -56,8 +64,8 @@ export const joinGame = () => (dispatch, getState) => {
        .then((response) => {
          dispatch(setPlayerID(response.data._id))
          dispatch(setGameID(response.data.gameId))
+         dispatch(push(`/game/${response.data.gameId}/${response.data._id}`))
        })
-       .then(() => dispatch(push('/lobby')))
 }
 
 export const createGame = () => (dispatch, getState) => {
@@ -67,21 +75,19 @@ export const createGame = () => (dispatch, getState) => {
        .then((response) => {
          dispatch(setPlayerID(response.data._id))
          dispatch(setGameID(response.data.gameId))
+         dispatch(push(`/game/${response.data._id}`))
        })
-       .then(() => dispatch(push('/lobby')))
 }
 
-export const getGameState = () => (dispatch, getState) => {
-  const state = getState()
-  const url = `${constants.SERVER_ADDRESS}/games/${state.gameID}`
+export const getGameState = playerId => (dispatch) => {
+  const url = `${constants.SERVER_ADDRESS}/players/${playerId}`
   axios.get(url)
-       .then((response) => {
-         dispatch(setPlayerList(response.data.players))
-         dispatch(setGameReference(response.data.reference))
-       })
+      .then((response) => {
+        dispatch(setGameState(response.data))
+      })
 }
 
-export const lodgeVote = () => {}/*(dispatch, getState) => {
+export const lodgeVote = () => {}/* (dispatch, getState) => {
   const state = getState()
   const url = `${constants.SERVER_ADDRESS}/games/${state.gameID}`
 }*/

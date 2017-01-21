@@ -3,8 +3,39 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Container, Header, Button, Segment } from 'semantic-ui-react'
 import * as Actions from '../actions'
+import PlayerList from '../components/PlayerList'
+import SectionHeader from '../components/SectionHeader'
 
-const Game = () => {
+class Game extends React.Component {
+  componentWillMount() {
+    this.props.getGameState(this.props.playerId)
+  }
+
+  render() {
+    return (
+      <Container>
+        <PlayerList players={this.props.playerList} />
+      </Container>
+    )
+  }
+}
+
+const LobbyView = () => {
+  const header = 'gaem'
+  return (
+    <Container>
+      <SectionHeader colour="blue" header={header} />
+      <Segment>
+        <Button icon="refresh" circular onClick={this.props.getGameState} floated={'right'} />
+        <br />
+        <br />
+        <Button fluid size={'huge'} color={'green'}>Start Game</Button>
+      </Segment>
+    </Container>
+  )
+}
+
+const GameView = () => {
   return (
     <Container>
       <Segment size={'massive'}>
@@ -27,6 +58,7 @@ const Game = () => {
 const mapStateToProps = (state, ownProps) => {
   return {
     ...state,
+    playerId: state.playerId || ownProps.params.playerId,
     ...ownProps.params,
   }
 }
