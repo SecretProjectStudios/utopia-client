@@ -12,7 +12,7 @@ const CreateGame = ({ playerName, createGame, setPlayerName }) => {
         <Header size={'huge'} textAlign={'center'}>Create a Council</Header>
       </Segment>
       <Segment>
-        <Input label={'Your name'} size={'big'} fluid onChange={(e, { value }) => this.props.setPlayerName(value)} value={playerName} />
+        <Input label={'Your name'} size={'big'} fluid onChange={(e, { value }) => setPlayerName(value)} value={playerName} />
         <br />
         <br />
         <Button color={'green'} size={'big'} disabled={!playerName} fluid onClick={createGame}>Create Game</Button>
