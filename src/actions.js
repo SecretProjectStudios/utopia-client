@@ -53,6 +53,10 @@ export const joinGame = () => (dispatch, getState) => {
   const state = getState()
   const url = `${constants.SERVER_ADDRESS}/games/${state.gameReference}/${state.playerName}`
   axios.post(url)
+       .then((response) => {
+         dispatch(setPlayerID(response.data._id))
+         dispatch(setGameID(response.data.gameId))
+       })
        .then(() => dispatch(push('/lobby')))
 }
 

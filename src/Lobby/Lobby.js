@@ -12,7 +12,7 @@ class Lobby extends React.Component {
 
   render() {
     const players = this.props.playerList
-    const header = `Game ${this.props.roomReference}`
+    const header = `Game ${this.props.gameReference}`
     return (
       <Container>
         <SectionHeader colour="blue" header={header} />
