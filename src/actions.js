@@ -44,7 +44,7 @@ export const getPlayerList = () => (dispatch, getState) => {
   const state = getState()
   const url = `https://utopia-server.herokuapp.com/games/${state.roomCode}`
   axios.get(url)
-       .then(response => dispatch(setPlayerList(response.data)))
+       .then(response => dispatch(setPlayerList(response.data.players)))
 }
 
 export const joinGame = () => (dispatch, getState) => {
