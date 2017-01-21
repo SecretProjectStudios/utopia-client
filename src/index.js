@@ -9,6 +9,7 @@ import { syncHistoryWithStore, routerMiddleware, routerReducer as routing } from
 import { Segment, Header } from 'semantic-ui-react'
 import { MainMenu } from './MainMenu'
 import { JoinGame } from './JoinGame'
+import { CreateGame } from './CreateGame'
 
 const reducer = combineReducers({
   routing,
@@ -41,7 +42,8 @@ ReactDOM.render(
     <Router history={history}>
       <Route component={App}>
         <Route path="/new" component={NewGame} />
-        <Route path="/:reference" component={JoinGame} />
+        <Route path="/join" component={JoinGame} />
+        <Route path="/create" component={CreateGame} />
         <Route path="/" component={MainMenu} />
       </Route>
     </Router>
