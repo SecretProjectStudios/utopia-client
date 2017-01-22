@@ -89,7 +89,7 @@ const GameView = (props) => {
       Diversity: 'group',
     }
 
-    const effectValue = passEffect[effect]
+    const effectValue = failEffect[effect]
 
     return (
       <div key={effect}>
