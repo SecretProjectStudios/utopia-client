@@ -84,6 +84,8 @@ export const getGameState = playerId => (dispatch) => {
   axios.get(url)
       .then((response) => {
         dispatch(setGameState(response.data))
+        dispatch(setPlayerID(response.data.player._id))
+        dispatch(setGameID(response.data.game._id))
       })
 }
 
