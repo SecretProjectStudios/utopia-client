@@ -55,6 +55,52 @@ const GameView = (props) => {
   const ideals = props.gameState.game.ideals
   const targets = props.gameState.player.targets
   const bill = props.gameState.bill
+  const passEffect = props.gameState.bill.passEffect
+  const failEffect = props.gameState.bill.failEffect
+
+  const passEffectsComponents = Object.keys(passEffect).map((effect) => {
+    const idealIcon = {
+      Education: 'student',
+      Economy: 'money',
+      Military: 'shield',
+      Freedom: 'hand peace',
+      Technology: 'lab',
+      Spirituality: 'child',
+      Environment: 'leaf',
+      Diversity: 'group',
+    }
+
+    const effectValue = passEffect[effect]
+
+    return (
+      <div>
+        <Icon name={idealIcon[effect]} />
+        {effectValue >= 0 ? <Icon name="plus" color="green" /> : <Icon name="minus" color="red" />}
+      </div>
+    )
+  })
+
+  const failEffectsComponents = Object.keys(failEffect).map((effect) => {
+    const idealIcon = {
+      Education: 'student',
+      Economy: 'money',
+      Military: 'shield',
+      Freedom: 'hand peace',
+      Technology: 'lab',
+      Spirituality: 'child',
+      Environment: 'leaf',
+      Diversity: 'group',
+    }
+
+    const effectValue = passEffect[effect]
+
+    return (
+      <div>
+        <Icon name={idealIcon[effect]} />
+        {effectValue >= 0 ? <Icon name="plus" color="green" /> : <Icon name="minus" color="red" />}
+      </div>
+    )
+  })
 
   const idealsComponents = Object.keys(ideals).map((ideal) => {
     const idealValue = ideals[ideal]
@@ -94,22 +140,28 @@ const GameView = (props) => {
       <Segment>
         {idealsComponents}
       </Segment>
-      <Segment size={'big'}>
-        <Header>{bill.text}</Header>
-      </Segment>
       <Segment size={'big'} textAlign={'center'}>
+        <Header size="huge">{bill.text}</Header>
         <Card.Group itemsPerRow={2}>
-          <Card>
+          <Card color="green">
             <Card.Header>
-              AYE!
+              <Header color="green" size="large">AYE!</Header>
             </Card.Header>
+            <Card.Description>
+              {passEffectsComponents}
+            </Card.Description>
           </Card>
-          <Card>
+          <Card color="red">
             <Card.Header>
-              NAY!
+              <Header color="red" size="large">NAY!</Header>
             </Card.Header>
+            <Card.Description>
+              {failEffectsComponents}
+            </Card.Description>
           </Card>
         </Card.Group>
+        <br />
+        <br />
         <Button.Group size={'massive'}>
           <Button color={'green'} onClick={() => props.lodgeVote('Aye')}>Aye!</Button>
           <Button.Or />
