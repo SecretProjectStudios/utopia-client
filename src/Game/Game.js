@@ -55,7 +55,7 @@ const GameView = (props) => {
   const passEffect = props.gameState.bill.passEffect
   const failEffect = props.gameState.bill.failEffect
 
-  const passEffectsComponents = Object.keys(passEffect).map((effect) => {
+  const passEffectsComponents = Object.keys(passEffect).sort().map((effect) => {
     const idealIcon = {
       Education: 'student',
       Economy: 'money',
@@ -77,7 +77,7 @@ const GameView = (props) => {
     )
   })
 
-  const failEffectsComponents = Object.keys(failEffect).map((effect) => {
+  const failEffectsComponents = Object.keys(failEffect).sort().map((effect) => {
     const idealIcon = {
       Education: 'student',
       Economy: 'money',
@@ -99,7 +99,7 @@ const GameView = (props) => {
     )
   })
 
-  const idealsComponents = Object.keys(ideals).map((ideal) => {
+  const idealsComponents = Object.keys(ideals).sort().map((ideal) => {
     const idealValue = ideals[ideal]
     const targetValue = targets[ideal] || 0
 
