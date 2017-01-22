@@ -4,7 +4,7 @@ import { List, Segment, Label, Icon } from 'semantic-ui-react'
 const PlayerList = ({ players }) => {
   const playerList = players || []
   return (
-    <Segment textAlign="center">
+    <Segment textAlign="center" vertical>
       <List horizontal>
         {playerList.map((player) => {
           return (

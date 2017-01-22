@@ -135,10 +135,10 @@ const GameView = (props) => {
   return (
     <Container>
       <PlayerList players={props.gameState.players} />
-      <Segment textAlign="center">
+      <Segment textAlign="center" vertical>
         {idealsComponents}
       </Segment>
-      <Segment size={'big'} textAlign={'center'}>
+      <Segment textAlign="center" vertical>
         <Header size="huge">{bill.text}</Header>
         <Card.Group itemsPerRow={2}>
           <Card color="green" onClick={() => props.lodgeVote('Aye')}>
