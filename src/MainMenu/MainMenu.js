@@ -8,7 +8,7 @@ const MainMenu = ({ goToCreateGame, goToJoinGame }) => {
   return (
     <Container>
       <Segment size={'massive'} padded>
-        <Header size={'huge'} textAlign={'center'} color={'blue'}>Utopia</Header>
+        <Header size={'huge'} textAlign={'center'} color={'blue'}>The Council</Header>
       </Segment>
       <Segment>
         <Button fluid size={'massive'} color="green" onClick={goToCreateGame}>Create Game</Button>

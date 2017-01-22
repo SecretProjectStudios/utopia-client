@@ -1,7 +1,7 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Container, Button, Segment, Icon, Header } from 'semantic-ui-react'
+import { Container, Button, Segment, Icon, Header, Card } from 'semantic-ui-react'
 import * as Actions from '../actions'
 import PlayerList from '../components/PlayerList'
 import SectionHeader from '../components/SectionHeader'
@@ -30,7 +30,7 @@ class Game extends React.Component {
     return (
       <Container>
         <PlayerList players={this.props.gameState.players} />
-        { gameComponent }
+        {gameComponent}
       </Container>
     )
   }
@@ -54,6 +54,7 @@ const LobbyView = (props) => {
 const GameView = (props) => {
   const ideals = props.gameState.game.ideals
   const targets = props.gameState.player.targets
+  const bill = props.gameState.bill
 
   const idealsComponents = Object.keys(ideals).map((ideal) => {
     const idealValue = ideals[ideal]
@@ -63,7 +64,7 @@ const GameView = (props) => {
     const max = (targetValue > idealValue) ? targetValue : idealValue
 
     for (let i = 0; i < max; i += 1) {
-      rating.push(<Icon size="big" name={i < idealValue ? 'circle' : 'circle thin'} color={i < targetValue ? i < idealValue ? 'green' : 'orange' : 'light grey'} />)
+      rating.push(<Icon name={i < idealValue ? 'circle' : 'circle thin'} color={i < targetValue ? i < idealValue ? 'green' : 'orange' : 'light grey'} />)
     }
 
     const idealIcon = {
@@ -79,7 +80,7 @@ const GameView = (props) => {
 
     return (
       <div>
-        <Icon size="big" name={idealIcon[ideal]} /> {rating}
+        <Icon name={idealIcon[ideal]} /> {rating}
       </div>
     )
   })
@@ -87,12 +88,24 @@ const GameView = (props) => {
   return (
     <Container>
       <Segment>
-        { idealsComponents }
+        {idealsComponents}
       </Segment>
       <Segment size={'big'}>
-        <Header></Header>
+        <Header>{bill.text}</Header>
       </Segment>
       <Segment size={'big'} textAlign={'center'}>
+        <Card.Group itemsPerRow={2}>
+          <Card>
+            <Card.Header>
+              AYE!
+            </Card.Header>
+          </Card>
+          <Card>
+            <Card.Header>
+              NAY!
+            </Card.Header>
+          </Card>
+        </Card.Group>
         <Button.Group size={'massive'}>
           <Button color={'green'} onClick={() => props.lodgeVote('Aye')}>Aye!</Button>
           <Button.Or />
