@@ -1,7 +1,7 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Container, Header, Button, Segment } from 'semantic-ui-react'
+import { Container, Button, Segment } from 'semantic-ui-react'
 import * as Actions from '../actions'
 import PlayerList from '../components/PlayerList'
 import SectionHeader from '../components/SectionHeader'
@@ -11,23 +11,38 @@ class Game extends React.Component {
     this.props.getGameState(this.props.playerId)
   }
 
+  componentWillReceiveProps() {
+    clearTimeout(this.timeout)
+    this.startPoll()
+  }
+
+  startPoll() {
+    this.timeout = setTimeout(() => this.props.getGameState(this.props.playerId), 1000)
+  }
+
   render() {
+    let gameComponent
+
+    if (this.props.gameState.game) {
+      gameComponent = this.props.gameState.game.state === 'NotStarted' ? <LobbyView /> : <GameView />
+    }
+
     return (
       <Container>
-        <PlayerList players={this.props.playerList} />
-        { this.props.gameState.game.state === 'NotStarted' ? <LobbyView /> : <GameView />}
+        <PlayerList players={this.props.gameState.players} />
+         { gameComponent }
       </Container>
     )
   }
 }
 
-const LobbyView = () => {
+const LobbyView = (props) => {
   const header = 'gaem'
   return (
     <Container>
       <SectionHeader colour="blue" header={header} />
       <Segment>
-        <Button icon="refresh" circular onClick={this.props.getGameState} floated={'right'} />
+        <Button icon="refresh" circular onClick={props.getGameState} floated={'right'} />
         <br />
         <br />
         <Button fluid size={'huge'} color={'green'}>Start Game</Button>
@@ -39,9 +54,7 @@ const LobbyView = () => {
 const GameView = () => {
   return (
     <Container>
-      <Segment size={'massive'}>
-        <Header size={'massive'} textAlign={'center'}>Your goal is</Header>
-      </Segment>
+      <SectionHeader colour="teal" header={'geeem'} />
       <Segment size={'big'}>
         Current bill
       </Segment>

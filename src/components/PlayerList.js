@@ -1,12 +1,13 @@
 import React from 'react'
-import { List, Sidebar } from 'semantic-ui-react'
+import { List, Segment } from 'semantic-ui-react'
 
 const PlayerList = ({ players }) => {
+  const playerList = players || []
   return (
-    <Sidebar animation="overlay" width="thin" visible vertical inverted>
-      <List relaxed size={'massive'}>
+    <Segment>
+      <List relaxed horizontal>
         <List.Header>Players</List.Header>
-        {players.map((player) => {
+        {playerList.map((player) => {
           return (
             <List.Item key={`${player._id}`}>
               <List.Icon name={'user'} />
@@ -18,7 +19,7 @@ const PlayerList = ({ players }) => {
         },
         )}
       </List>
-    </Sidebar>
+    </Segment>
   )
 }
 export default PlayerList

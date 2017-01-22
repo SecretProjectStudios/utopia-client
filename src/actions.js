@@ -47,7 +47,7 @@ export const setPlayerList = (value) => {
   }
 }
 
-export const gameState = (value) => {
+export const setGameState = (value) => {
   return {
     type: constants.SET_GAME_STATE,
     value,
@@ -64,7 +64,7 @@ export const joinGame = () => (dispatch, getState) => {
        .then((response) => {
          dispatch(setPlayerID(response.data._id))
          dispatch(setGameID(response.data.gameId))
-         dispatch(push(`/game/${response.data.gameId}/${response.data._id}`))
+         dispatch(push(`/game/${response.data._id}`))
        })
 }
 
@@ -83,7 +83,7 @@ export const getGameState = playerId => (dispatch) => {
   const url = `${constants.SERVER_ADDRESS}/players/${playerId}`
   axios.get(url)
       .then((response) => {
-        dispatch(gameState(response.data))
+        dispatch(setGameState(response.data))
       })
 }
 
