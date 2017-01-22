@@ -132,13 +132,21 @@ const GameView = (props) => {
     )
   })
 
+  let voted = false
+  for (let i = 0; i < props.gameState.players.length; i += 1){
+    const player = props.gameState.players[i]
+    if (player._id === props.gameState.player._id && player.voted) {
+      voted = true
+    }
+  }
+
   return (
     <Container>
       <PlayerList players={props.gameState.players} />
       <Segment textAlign="center" vertical>
         {idealsComponents}
       </Segment>
-      <Segment textAlign="center" vertical>
+      <Segment textAlign="center" vertical disabled={voted}>
         <Header size="huge">{bill.text}</Header>
         <Card.Group itemsPerRow={2}>
           <Card color="green" onClick={() => props.lodgeVote('Aye')}>
