@@ -64,7 +64,11 @@ const GameView = (props) => {
     const max = (targetValue > idealValue) ? targetValue : idealValue
 
     for (let i = 0; i < max; i += 1) {
-      rating.push(<Icon name={i < idealValue ? 'circle' : 'circle thin'} color={i < targetValue ? i < idealValue ? 'green' : 'orange' : 'light grey'} />)
+      rating.push(<Icon name={i < idealValue ? 'circle' : 'dot circle outline'} color={i < targetValue ? 'green' : 'grey'} disabled={i >= targetValue} />)
+    }
+
+    for (let i = max; i < 10; i += 1) {
+      rating.push(<Icon name="circle outline" color="grey" disabled />)
     }
 
     const idealIcon = {
