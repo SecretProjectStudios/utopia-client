@@ -17,7 +17,7 @@ class Game extends React.Component {
   }
 
   startPoll() {
-    this.timeout = setTimeout(() => this.props.getGameState(this.props.playerId), 1000)
+    this.timeout = setTimeout(() => this.props.getGameState(this.props.playerId), 250)
   }
 
   render() {
