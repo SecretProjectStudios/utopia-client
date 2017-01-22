@@ -89,7 +89,7 @@ export const getGameState = playerId => (dispatch) => {
 
 export const startGame = () => (dispatch, getState) => {
   const state = getState()
-  const url = `${constants.SERVER_ADDRESS}/games/${state.gameState.game._id}`
+  const url = `${constants.SERVER_ADDRESS}/games/${state.gameState.game._id}/start`
   axios.put(url)
 }
 
