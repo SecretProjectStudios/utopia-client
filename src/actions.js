@@ -95,8 +95,9 @@ export const startGame = () => (dispatch, getState) => {
 
 export const lodgeVote = vote => (dispatch, getState) => {
   const state = getState()
+  console.log(state)
   const url = `${constants.SERVER_ADDRESS}/players/${state.playerId}/vote`
-  axios.post(url, { 'vote': vote })
+  axios.post(url, { vote })
        .then((response) => {
          dispatch(setGameState(response.data))
        })

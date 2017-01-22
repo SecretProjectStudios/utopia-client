@@ -63,7 +63,7 @@ const GameView = (props) => {
     const max = (targetValue > idealValue) ? targetValue : idealValue
 
     for (let i = 0; i < max; i += 1) {
-      rating.push(<Icon name={i < idealValue ? 'circle' : 'circle thin'} color={i < targetValue ? i < idealValue ? 'green' : 'orange' : 'light grey'} />)
+      rating.push(<Icon size="big" name={i < idealValue ? 'circle' : 'circle thin'} color={i < targetValue ? i < idealValue ? 'green' : 'orange' : 'light grey'} />)
     }
 
     const idealIcon = {
@@ -79,7 +79,7 @@ const GameView = (props) => {
 
     return (
       <div>
-        <Icon name={idealIcon[ideal]} /> {ideal}: {rating}
+        <Icon size="big" name={idealIcon[ideal]} /> {rating}
       </div>
     )
   })
@@ -94,9 +94,9 @@ const GameView = (props) => {
       </Segment>
       <Segment size={'big'} textAlign={'center'}>
         <Button.Group size={'massive'}>
-          <Button color={'green'}>Aye!</Button>
+          <Button color={'green'} onClick={() => props.lodgeVote('Aye')}>Aye!</Button>
           <Button.Or />
-          <Button color={'red'}>Nay!</Button>
+          <Button color={'red'} onClick={() => props.lodgeVote('Nay')}>Nay!</Button>
         </Button.Group>
       </Segment>
     </Container>
