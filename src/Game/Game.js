@@ -24,7 +24,7 @@ class Game extends React.Component {
     let gameComponent
 
     if (this.props.gameState.game) {
-      gameComponent = this.props.gameState.game.state === 'NotStarted' ? <LobbyView /> : <GameView />
+      gameComponent = this.props.gameState.game.state === 'NotStarted' ? <LobbyView {...this.props} /> : <GameView />
     }
 
     return (
