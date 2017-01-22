@@ -1,7 +1,7 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Container, Button, Segment, Icon } from 'semantic-ui-react'
+import { Container, Button, Segment, Icon, Header } from 'semantic-ui-react'
 import * as Actions from '../actions'
 import PlayerList from '../components/PlayerList'
 import SectionHeader from '../components/SectionHeader'
@@ -37,7 +37,7 @@ class Game extends React.Component {
 }
 
 const LobbyView = (props) => {
-  const header = 'gaem'
+  const header = props.gameState.game.reference || ''
   return (
     <Container>
       <SectionHeader colour="blue" header={header} />
@@ -90,7 +90,7 @@ const GameView = (props) => {
         { idealsComponents }
       </Segment>
       <Segment size={'big'}>
-        Current bill
+        <Header></Header>
       </Segment>
       <Segment size={'big'} textAlign={'center'}>
         <Button.Group size={'massive'}>
