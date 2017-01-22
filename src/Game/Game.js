@@ -45,7 +45,7 @@ const LobbyView = (props) => {
         <Button icon="refresh" circular onClick={props.getGameState} floated={'right'} />
         <br />
         <br />
-        <Button fluid size={'huge'} color={'green'}>Start Game</Button>
+        <Button fluid size={'huge'} color={'green'} onClick={props.startGame}>Start Game</Button>
       </Segment>
     </Container>
   )
