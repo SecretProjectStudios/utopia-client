@@ -5,4 +5,4 @@ export const gameID = (state = '', action) => action.type === constants.SET_GAME
 export const gameReference = (state = '', action) => action.type === constants.SET_GAME_REFERENCE ? action.value : state
 export const playerList = (state = [], action) => action.type === constants.SET_PLAYER_LIST ? action.value : state
 export const setPlayerId = (state = '', action) => action.type === constants.SET_PLAYER_ID ? action.value : state
-export const setGameState = (state = {}, action) => action.type === constants.SET_GAME_STATE ? action.value : state
+export const gameState = (state = {}, action) => action.type === constants.SET_GAME_STATE ? action.value : state

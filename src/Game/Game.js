@@ -15,6 +15,7 @@ class Game extends React.Component {
     return (
       <Container>
         <PlayerList players={this.props.playerList} />
+        { this.props.gameState.game.state === 'NotStarted' ? <LobbyView /> : <GameView />}
       </Container>
     )
   }

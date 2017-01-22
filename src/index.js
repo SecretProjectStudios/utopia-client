@@ -9,7 +9,6 @@ import { syncHistoryWithStore, routerMiddleware, routerReducer as routing } from
 import MainMenu from './MainMenu'
 import CreateGame from './CreateGame'
 import JoinGame from './JoinGame'
-import Lobby from './Lobby'
 import Game from './Game'
 import * as globalReducer from './reducer'
 

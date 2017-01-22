@@ -47,7 +47,7 @@ export const setPlayerList = (value) => {
   }
 }
 
-export const setGameState = (value) => {
+export const gameState = (value) => {
   return {
     type: constants.SET_GAME_STATE,
     value,
@@ -83,7 +83,7 @@ export const getGameState = playerId => (dispatch) => {
   const url = `${constants.SERVER_ADDRESS}/players/${playerId}`
   axios.get(url)
       .then((response) => {
-        dispatch(setGameState(response.data))
+        dispatch(gameState(response.data))
       })
 }
 
