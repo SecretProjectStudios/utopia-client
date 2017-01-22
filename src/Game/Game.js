@@ -71,8 +71,8 @@ const GameView = (props) => {
 
     return (
       <div key={effect}>
-        <Icon name={idealIcon[effect]} />
-        {effectValue >= 0 ? <Icon name="plus" color="green" /> : <Icon name="minus" color="red" />}
+        <Icon name={idealIcon[effect]} color="black" size="large" />
+        {effectValue >= 0 ? <Icon name="plus" color="green" size="large" /> : <Icon name="minus" color="red" size="large" />}
       </div>
     )
   })
@@ -93,8 +93,8 @@ const GameView = (props) => {
 
     return (
       <div key={effect}>
-        <Icon name={idealIcon[effect]} />
-        {effectValue >= 0 ? <Icon name="plus" color="green" /> : <Icon name="minus" color="red" />}
+        <Icon name={idealIcon[effect]} color="black" size="large" />
+        {effectValue >= 0 ? <Icon name="plus" color="green" size="large" /> : <Icon name="minus" color="red" size="large" />}
       </div>
     )
   })
@@ -127,7 +127,7 @@ const GameView = (props) => {
 
     return (
       <div key={ideal} >
-        <Icon name={idealIcon[ideal]} /> {rating}
+        <Icon name={idealIcon[ideal]} color="black" /> {rating}
       </div>
     )
   })
@@ -135,13 +135,13 @@ const GameView = (props) => {
   return (
     <Container>
       <PlayerList players={props.gameState.players} />
-      <Segment>
+      <Segment textAlign="center">
         {idealsComponents}
       </Segment>
       <Segment size={'big'} textAlign={'center'}>
         <Header size="huge">{bill.text}</Header>
         <Card.Group itemsPerRow={2}>
-          <Card color="green">
+          <Card color="green" onClick={() => props.lodgeVote('Aye')}>
             <Card.Header>
               <Header color="green" size="large">AYE!</Header>
             </Card.Header>
@@ -149,7 +149,7 @@ const GameView = (props) => {
               {passEffectsComponents}
             </Card.Description>
           </Card>
-          <Card color="red">
+          <Card color="red" onClick={() => props.lodgeVote('Nay')}>
             <Card.Header>
               <Header color="red" size="large">NAY!</Header>
             </Card.Header>
@@ -158,13 +158,6 @@ const GameView = (props) => {
             </Card.Description>
           </Card>
         </Card.Group>
-        <br />
-        <br />
-        <Button.Group size={'massive'}>
-          <Button color={'green'} onClick={() => props.lodgeVote('Aye')}>Aye!</Button>
-          <Button.Or />
-          <Button color={'red'} onClick={() => props.lodgeVote('Nay')}>Nay!</Button>
-        </Button.Group>
       </Segment>
     </Container>
   )
