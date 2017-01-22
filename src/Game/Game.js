@@ -24,12 +24,11 @@ class Game extends React.Component {
     let gameComponent
 
     if (this.props.gameState.game) {
-      gameComponent = this.props.gameState.game.state === 'NotStarted' ? <LobbyView {...this.props} /> : <GameView {...this.props} />
+      gameComponent = this.props.gameState.game.state === 'Started' ? <GameView {...this.props} /> : <LobbyView {...this.props} />
     }
 
     return (
       <Container>
-        <PlayerList players={this.props.gameState.players} />
         {gameComponent}
       </Container>
     )
@@ -41,10 +40,8 @@ const LobbyView = (props) => {
   return (
     <Container>
       <SectionHeader colour="blue" header={header} />
+      <PlayerList players={props.gameState.players} />
       <Segment>
-        <Button icon="refresh" circular onClick={props.getGameState} floated={'right'} />
-        <br />
-        <br />
         <Button fluid size={'huge'} color={'green'} onClick={props.startGame}>Start Game</Button>
       </Segment>
     </Container>
@@ -73,7 +70,7 @@ const GameView = (props) => {
     const effectValue = passEffect[effect]
 
     return (
-      <div>
+      <div key={effect}>
         <Icon name={idealIcon[effect]} />
         {effectValue >= 0 ? <Icon name="plus" color="green" /> : <Icon name="minus" color="red" />}
       </div>
@@ -95,7 +92,7 @@ const GameView = (props) => {
     const effectValue = passEffect[effect]
 
     return (
-      <div>
+      <div key={effect}>
         <Icon name={idealIcon[effect]} />
         {effectValue >= 0 ? <Icon name="plus" color="green" /> : <Icon name="minus" color="red" />}
       </div>
@@ -110,11 +107,11 @@ const GameView = (props) => {
     const max = (targetValue > idealValue) ? targetValue : idealValue
 
     for (let i = 0; i < max; i += 1) {
-      rating.push(<Icon name={i < idealValue ? 'circle' : 'dot circle outline'} color={i < targetValue ? 'green' : 'grey'} disabled={i >= targetValue} />)
+      rating.push(<Icon key={ideal + i} name={i < idealValue ? 'circle' : 'dot circle outline'} color={i < targetValue ? 'green' : 'grey'} disabled={i >= targetValue} />)
     }
 
     for (let i = max; i < 10; i += 1) {
-      rating.push(<Icon name="circle outline" color="grey" disabled />)
+      rating.push(<Icon key={ideal + i} name="circle outline" color="grey" disabled />)
     }
 
     const idealIcon = {
@@ -129,7 +126,7 @@ const GameView = (props) => {
     }
 
     return (
-      <div>
+      <div key={ideal} >
         <Icon name={idealIcon[ideal]} /> {rating}
       </div>
     )
@@ -137,6 +134,7 @@ const GameView = (props) => {
 
   return (
     <Container>
+      <PlayerList players={props.gameState.players} />
       <Segment>
         {idealsComponents}
       </Segment>
