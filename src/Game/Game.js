@@ -1,7 +1,7 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Container, Button, Segment } from 'semantic-ui-react'
+import { Container, Button, Segment, Icon } from 'semantic-ui-react'
 import * as Actions from '../actions'
 import PlayerList from '../components/PlayerList'
 import SectionHeader from '../components/SectionHeader'
@@ -24,13 +24,13 @@ class Game extends React.Component {
     let gameComponent
 
     if (this.props.gameState.game) {
-      gameComponent = this.props.gameState.game.state === 'NotStarted' ? <LobbyView {...this.props} /> : <GameView />
+      gameComponent = this.props.gameState.game.state === 'NotStarted' ? <LobbyView {...this.props} /> : <GameView {...this.props} />
     }
 
     return (
       <Container>
         <PlayerList players={this.props.gameState.players} />
-         { gameComponent }
+        { gameComponent }
       </Container>
     )
   }
@@ -51,10 +51,44 @@ const LobbyView = (props) => {
   )
 }
 
-const GameView = () => {
+const GameView = (props) => {
+  const ideals = props.gameState.game.ideals
+  const targets = props.gameState.player.targets
+
+  const idealsComponents = Object.keys(ideals).map((ideal) => {
+    const idealValue = ideals[ideal]
+    const targetValue = targets[ideal] || 0
+
+    const rating = []
+    const max = (targetValue > idealValue) ? targetValue : idealValue
+
+    for (let i = 0; i < max; i += 1) {
+      rating.push(<Icon name={i < idealValue ? 'circle' : 'circle thin'} color={i < targetValue ? i < idealValue ? 'green' : 'orange' : 'light grey'} />)
+    }
+
+    const idealIcon = {
+      Education: 'student',
+      Economy: 'money',
+      Military: 'shield',
+      Freedom: 'hand peace',
+      Technology: 'lab',
+      Spirituality: 'child',
+      Environment: 'leaf',
+      Diversity: 'group',
+    }
+
+    return (
+      <div>
+        <Icon name={idealIcon[ideal]} /> {ideal}: {rating}
+      </div>
+    )
+  })
+
   return (
     <Container>
-      <SectionHeader colour="teal" header={'geeem'} />
+      <Segment>
+        { idealsComponents }
+      </Segment>
       <Segment size={'big'}>
         Current bill
       </Segment>
