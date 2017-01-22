@@ -24,7 +24,7 @@ const history = syncHistoryWithStore(browserHistory, store)
 const App = ({ children }) => {
   const styles = {
     wrapper: {
-      margin: '40px 40px',
+      margin: '40px 0px',
     },
   }
   return (

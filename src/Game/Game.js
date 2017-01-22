@@ -126,7 +126,7 @@ const GameView = (props) => {
     }
 
     return (
-      <div key={ideal} >
+      <div key={ideal}>
         <Icon name={idealIcon[ideal]} color="black" size="large" /> {rating}
       </div>
     )
